@@ -1,8 +1,8 @@
 # XamarinForms-PhotoStock-UI-Design
 <h3><a href="https://www.youtube.com/embed/lt-w_uqNTz8">Video</a></p></3>
 <p> <img border="0" src="https://imgur.com/6KTcy6c.png"></p>
-<p> <img border="0" src="https://imgur.com/t6jzxfN.gif"></p>
-![Alt Text](https://imgur.com/t6jzxfN.gif)
+<p> <img border="0" src="https://media.giphy.com/media/eM1mRxGwhF8UYDsYhz/giphy.gif"></p>
+
 
 
 <h2><a href="https://codecanyon.net/user/xamdesign/portfolio">More Xamarin applications and designs</a></p></2>
