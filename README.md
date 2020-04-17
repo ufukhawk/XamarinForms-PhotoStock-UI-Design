@@ -1,10 +1,6 @@
 # XamarinForms-PhotoStock-UI-Design
-<h3><a href="https://www.youtube.com/embed/lt-w_uqNTz8">Video</a></p></3>
 <p> <img border="0" src="https://imgur.com/6KTcy6c.png"></p>
 <p> <img border="0" src="https://media.giphy.com/media/eM1mRxGwhF8UYDsYhz/giphy.gif"></p>
-
-
-
 <h2><a href="https://codecanyon.net/user/xamdesign/portfolio">More Xamarin applications and designs</a></p></2>
 
 <a href="https://codecanyon.net/item/govo-travel-application-xamarin-forms-android-ios/26323225"><img border="0" alt="Govo Travel Application" src="https://codecanyon.img.customer.envatousercontent.com/files/285899049/App%20Preview%20Image.png?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=85b51279e084b761220909587ef43ef9.png"></a>
