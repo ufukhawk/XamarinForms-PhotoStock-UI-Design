@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<view:BaseView
+    x:Class="Photostock.View.PhotoDetail"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+    xmlns:view="clr-namespace:Photostock.View"
+    NavigationPage.HasNavigationBar="False">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Image
+            x:Name="ItemImage"
+            sharedTransitions:Transition.Name="Image"
+            AbsoluteLayout.LayoutBounds="1,1,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Aspect="AspectFill"
+            Source="{Binding Image}" />
+        <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,.7" AbsoluteLayout.LayoutFlags="All">
+            <pancakeview:PancakeView
+                x:Name="DetailPopup"
+                Padding="20,20,20,0"
+                TranslationY="90"
+                sharedTransitions:Transition.Name="Image"
+                BackgroundColor="White"
+                CornerRadius="20,20,0,0"
+                HeightRequest="50"
+                VerticalOptions="EndAndExpand">
+                <StackLayout Spacing="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontFamily="Arial"
+                            FontSize="25"
+                            HorizontalOptions="Start"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Title}"
+                            TextColor="#343434"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontFamily="Arial"
+                            FontSize="Small"
+                            HorizontalOptions="Start"
+                            Text="Standart License"
+                            TextColor="LightGray" />
+                        <pancakeview:PancakeView
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            BackgroundColor="#DEDEDF"
+                            CornerRadius="14"
+                            HeightRequest="28"
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="28">
+                            <Image
+                                Margin="4"
+                                Aspect="AspectFit"
+                                HorizontalOptions="CenterAndExpand"
+                                Source="heart.png"
+                                VerticalOptions="CenterAndExpand" />
+                        </pancakeview:PancakeView>
+                        <pancakeview:PancakeView
+                            x:Name="ExpandPopupLayout"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            BackgroundColor="#EC7D7D"
+                            CornerRadius="14"
+                            HeightRequest="28"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="28">
+                            <pancakeview:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ExpandPopup" />
+                            </pancakeview:PancakeView.GestureRecognizers>
+                            <Image
+                                Margin="4"
+                                Aspect="AspectFit"
+                                HorizontalOptions="CenterAndExpand"
+                                Rotation="180"
+                                Source="down_arrow.png"
+                                VerticalOptions="CenterAndExpand">
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference DetailPopup}, Path=HeightRequest}"
+                                        TargetType="Image"
+                                        Value="400">
+                                        <Setter Property="Rotation" Value="0" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                        </pancakeview:PancakeView>
+
+                    </Grid>
+                    <StackLayout
+                        x:Name="DetailLayout"
+                        Opacity="0"
+                        Spacing="20">
+                        <BoxView BackgroundColor="#D3D3D3" HeightRequest=".5" />
+                        <StackLayout
+                            x:Name="DetailInfoLayout"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="0"
+                            Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="Arial"
+                                    FontSize="Micro"
+                                    HorizontalOptions="Start"
+                                    Text="Dimensions"
+                                    TextColor="LightGray" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="Arial"
+                                    FontSize="Medium"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="6148x4014px"
+                                    TextColor="#343434"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="Arial"
+                                    FontSize="Micro"
+                                    HorizontalOptions="Start"
+                                    Text="File Type"
+                                    TextColor="LightGray" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="Arial"
+                                    FontSize="Medium"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="JPEG"
+                                    TextColor="#343434"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="Arial"
+                                    FontSize="Micro"
+                                    HorizontalOptions="Start"
+                                    Text="Category"
+                                    TextColor="LightGray" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="Arial"
+                                    FontSize="Medium"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding Category}"
+                                    TextColor="#343434"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView BackgroundColor="#D3D3D3" HeightRequest=".5" />
+                        <ScrollView
+                            x:Name="ImagesLayout"
+                            HorizontalScrollBarVisibility="Never"
+                            Opacity="0"
+                            Orientation="Both"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalScrollBarVisibility="Never">
+                            <StackLayout
+                                x:Name="ImageList"
+                                BindableLayout.ItemsSource="{Binding ImageGalleries}"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="EndAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <pancakeview:PancakeView
+                                            BindableLayout.ItemsSource="{Binding ImageGalleries}"
+                                            CornerRadius="10"
+                                            VerticalOptions="FillAndExpand">
+                                            <Image
+                                                sharedTransitions:Transition.Group="{Binding Id}"
+                                                sharedTransitions:Transition.Name="Image"
+                                                Aspect="AspectFill"
+                                                HeightRequest="190"
+                                                Source="{Binding Image}"
+                                                VerticalOptions="StartAndExpand"
+                                                WidthRequest="150" />
+                                        </pancakeview:PancakeView>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+                </StackLayout>
+            </pancakeview:PancakeView>
+        </StackLayout>
+        <pancakeview:PancakeView
+            AbsoluteLayout.LayoutBounds="0,0,.1,.2"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="#40FFFFFF"
+            CornerRadius="14"
+            HeightRequest="28"
+            HorizontalOptions="End"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="28">
+            <pancakeview:PancakeView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Back" ></TapGestureRecognizer>
+            </pancakeview:PancakeView.GestureRecognizers>
+            <Image
+                Margin="4"
+                Aspect="AspectFit"
+                HorizontalOptions="CenterAndExpand"
+                Rotation="90"
+                Source="down_arrow.png"
+                VerticalOptions="CenterAndExpand" />
+        </pancakeview:PancakeView>
+    </AbsoluteLayout>
+</view:BaseView>

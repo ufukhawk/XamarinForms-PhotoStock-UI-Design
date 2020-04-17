@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<view:BaseView
+    x:Class="Photostock.View.StartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:renderers="clr-namespace:Photostock.Renderers"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+    xmlns:view="clr-namespace:Photostock.View"
+    Padding="0,20,0,0"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout Spacing="0">
+        <StackLayout
+            x:Name="ProfileLayout"
+            Padding="20"
+            HeightRequest="70"
+            HorizontalOptions="FillAndExpand"
+            Opacity="0"
+            Orientation="Horizontal"
+            Spacing="15">
+            <pancakeview:PancakeView
+                x:Name="ProfilePicture"
+                Padding="0"
+                BackgroundColor="Red"
+                CornerRadius="30"
+                HeightRequest="60"
+                Scale=".5"
+                WidthRequest="60">
+                <Image Aspect="AspectFill" Source="katie.jpg" />
+            </pancakeview:PancakeView>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label
+                    x:Name="UserName"
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="25"
+                    HorizontalOptions="Start"
+                    Opacity="0"
+                    Text="Katie G."
+                    TextColor="#343434" />
+                <pancakeview:PancakeView
+                    x:Name="FollowButton"
+                    BackgroundColor="#F17D7D"
+                    CornerRadius="10"
+                    HeightRequest="20"
+                    Opacity="0"
+                    WidthRequest="50">
+                    <Label
+                        FontAttributes="None"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Follow"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </pancakeview:PancakeView>
+            </StackLayout>
+            <BoxView BackgroundColor="LightGray" WidthRequest=".5" />
+            <StackLayout
+                x:Name="FollowersLayout"
+                Opacity="0"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="41k"
+                    TextColor="#343434" />
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="12"
+                    HorizontalOptions="Start"
+                    Text="Followers"
+                    TextColor="LightGray" />
+            </StackLayout>
+            <BoxView BackgroundColor="LightGray" WidthRequest=".5" />
+            <StackLayout
+                x:Name="FollowingLayout"
+                Opacity="0"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="324"
+                    TextColor="#343434" />
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="12"
+                    HorizontalOptions="Start"
+                    Text="Following"
+                    TextColor="LightGray" />
+            </StackLayout>
+            <BoxView BackgroundColor="LightGray" WidthRequest=".5" />
+        </StackLayout>
+        <StackLayout
+            x:Name="TabsLayout"
+            Margin="0,0,0,0"
+            HorizontalOptions="FillAndExpand"
+            Opacity="0"
+            Orientation="Horizontal"
+            Spacing="0"
+            TranslationY="10">
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Photos"
+                    TextColor="#343434" />
+                <BoxView BackgroundColor="#343434" HeightRequest="1.1" />
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Videos"
+                    TextColor="DarkGray" />
+                <BoxView BackgroundColor="LightGray" HeightRequest="1" />
+            </StackLayout>  
+        </StackLayout>
+        <pancakeview:PancakeView
+            x:Name="SearchBar"
+            Margin="{OnPlatform Android=10,iOS='0,10,0,10'}"
+            Padding="0"
+            BackgroundColor="{x:OnPlatform Android='#EBEBEB',
+                                           iOS='Transparent'}"
+            CornerRadius="10"
+            HeightRequest="40"
+            Opacity="0"
+            TranslationY="10">
+            <renderers:BorderlessSearchBar
+                BackgroundColor="{x:OnPlatform Android='#EBEBEB',
+                                               iOS='Transparent'}"
+                CancelButtonColor="LightGray"
+                FontFamily="Arial"
+                Placeholder="What would you like to discover?"
+                PlaceholderColor="#C8C8C8"
+                TextColor="#343434"
+                VerticalOptions="CenterAndExpand" />
+        </pancakeview:PancakeView>
+
+        <controls:FlowListView
+            x:Name="Photos"
+            BackgroundColor="Transparent"
+            FlowColumnCount="2"
+            FlowColumnExpand="None"
+            FlowItemTapped="Photos_FlowItemTapped"
+            HasUnevenRows="True"
+            Opacity="0"
+            SeparatorVisibility="None"
+            TranslationY="30"
+            VerticalScrollBarVisibility="Never">
+            <controls:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <pancakeview:PancakeView
+                        Margin="10"
+                        BackgroundColor="Red"
+                        CornerRadius="10"
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand">
+                        <Image
+                            sharedTransitions:Transition.Group="{Binding Id}"
+                            sharedTransitions:Transition.Name="Image"
+                            Aspect="AspectFill"
+                            Source="{Binding Image}"
+                            VerticalOptions="Center" />
+                    </pancakeview:PancakeView>
+                </DataTemplate>
+            </controls:FlowListView.FlowColumnTemplate>
+        </controls:FlowListView>
+    </StackLayout>
+</view:BaseView>

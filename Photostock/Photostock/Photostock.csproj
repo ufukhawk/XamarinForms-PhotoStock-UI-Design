@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
+    <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
+    <Folder Include="Model\" />
+    <Folder Include="Renderers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="View\HomePage.xaml.cs" />
+  </ItemGroup>
+</Project>
